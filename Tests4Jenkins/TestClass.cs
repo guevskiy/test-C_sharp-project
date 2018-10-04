@@ -43,17 +43,44 @@ namespace Tests4Jenkins
             Assert.AreEqual("Groups", str);
         }
 
+        Random rnd = new Random();
+
+        public void createNewGroup()
+        {
+            int n = rnd.Next(1, 99);
+            
+            driver.FindElement(By.CssSelector("input[name='new']")).Click();
+
+            Thread.Sleep(500);
+            driver.FindElement(By.CssSelector("input[name='group_name']")).SendKeys("group_name " + n);
+            Thread.Sleep(500);
+            driver.FindElement(By.CssSelector("textarea[name='group_header']")).SendKeys("group_header" + n);
+            Thread.Sleep(500);
+            driver.FindElement(By.CssSelector("textarea[name='group_footer']")).SendKeys("group_footer" + n);
+
+            driver.FindElement(By.CssSelector("input[name='submit']")).Click();
+        }
+
         [Test]
         public void TestMethod_002()
         {
+            
             driver.FindElement(By.CssSelector("input[name='user']")).SendKeys("admin");
             Thread.Sleep(500);
             driver.FindElement(By.CssSelector("input[name='pass']")).SendKeys("secret");
             Thread.Sleep(500);
             driver.FindElement(By.CssSelector("input[value='Login']")).Click();
-            Thread.Sleep(2000);
-            int nn = driver.FindElements(By.CssSelector("span.group")).Count;
-            Assert.AreEqual(3, nn);
+            Thread.Sleep(1000);
+
+            int nn_befor = driver.FindElements(By.CssSelector("span.group")).Count;
+            createNewGroup();
+            Thread.Sleep(500);
+            driver.FindElement(By.LinkText("group page")).Click();
+            Thread.Sleep(500);
+
+            int nn_after = driver.FindElements(By.CssSelector("span.group")).Count;
+            Assert.AreEqual(nn_befor+1, nn_after);
         }
+
     }
 }
