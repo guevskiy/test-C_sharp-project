@@ -18,7 +18,8 @@ namespace Tests4Jenkins
         [SetUp]
         public void SetUp()
         {
-            driver.Navigate().GoToUrl("http://google.com.ua");
+            driver.Navigate().GoToUrl("http://addressbook:8087/group.php");
+            Thread.Sleep(2000);
         }
 
         [TearDown]
@@ -30,11 +31,14 @@ namespace Tests4Jenkins
         [Test]
         public void TestMethod()
         {
-            driver.FindElement(By.CssSelector("input#lst-ib")).SendKeys("Как заработать миллион");
+            driver.FindElement(By.CssSelector("input[name='user']")).SendKeys("admin");
             Thread.Sleep(500);
-            driver.FindElement(By.CssSelector("ul[role='listbox'] li:nth-child(2)")).Click();
-            Thread.Sleep(3000);
-            //Assert.Pass("Your first passing test");
+            driver.FindElement(By.CssSelector("input[name='pass']")).SendKeys("secret");
+            Thread.Sleep(500);
+            driver.FindElement(By.CssSelector("input[value='Login']")).Click();
+            Thread.Sleep(2000);
+            string str = driver.FindElement(By.CssSelector("div#content h1")).Text;
+            Assert.AreEqual("Groups", str);
         }
     }
 }
