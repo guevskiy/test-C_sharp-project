@@ -53,7 +53,7 @@ namespace Tests4Jenkins
             driver.FindElement(By.CssSelector("input[value='Login']")).Click();
             Thread.Sleep(2000);
             int nn = driver.FindElements(By.CssSelector("span.group")).Count;
-            Assert.AreEqual(2, nn);
+            Assert.AreEqual(3, nn);
         }
     }
 }
