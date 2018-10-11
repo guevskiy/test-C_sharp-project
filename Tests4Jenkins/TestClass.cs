@@ -15,17 +15,18 @@ namespace Tests4Jenkins
     {
         IWebDriver driver;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void SetUp()
         {
             driver = new ChromeDriver();
             //driver.Navigate().GoToUrl("http://executeautomation.com/demosite/index.html");
             driver.Navigate().GoToUrl("http://addressbook:8087/group.php");
             driver.Manage().Window.Maximize();
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
+            Login();
         }
 
-        [TearDown]
+        [OneTimeTearDown]
         public void TearDown()
         {
             driver.Close();
@@ -33,15 +34,14 @@ namespace Tests4Jenkins
         }
 
         [Test]
-        public void TestMethod_01()
+        public void TestMethod_001()
         {
             string sz = driver.Manage().Window.Size.ToString();
             Console.WriteLine(sz);
             Assert.AreEqual("{Width=1936, Height=1056}", sz);
         }
 
-        [Test]
-        public void TestMethod_001()
+        public void Login()
         {
             driver.FindElement(By.CssSelector("input[name='user']")).SendKeys("admin");
             Thread.Sleep(500);
@@ -49,6 +49,11 @@ namespace Tests4Jenkins
             Thread.Sleep(500);
             driver.FindElement(By.CssSelector("input[value='Login']")).Click();
             Thread.Sleep(2000);
+        }
+
+        [Test]
+        public void TestMethod_002()
+        {
             string str = driver.FindElement(By.CssSelector("div#content h1")).Text;
             Assert.AreEqual("Groups", str);
         }
@@ -72,16 +77,8 @@ namespace Tests4Jenkins
         }
 
         [Test]
-        public void TestMethod_002()
+        public void TestMethod_003()
         {
-
-            driver.FindElement(By.CssSelector("input[name='user']")).SendKeys("admin");
-            Thread.Sleep(500);
-            driver.FindElement(By.CssSelector("input[name='pass']")).SendKeys("secret");
-            Thread.Sleep(500);
-            driver.FindElement(By.CssSelector("input[value='Login']")).Click();
-            Thread.Sleep(1000);
-
             int nn_befor = driver.FindElements(By.CssSelector("span.group")).Count;
             createNewGroup();
             Thread.Sleep(500);
