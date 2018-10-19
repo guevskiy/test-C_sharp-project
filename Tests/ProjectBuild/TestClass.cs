@@ -47,10 +47,11 @@ namespace ProjectBuild
         driver.Navigate().Refresh();
         i = driver.FindElements(By.CssSelector("div.card div.card-header")).Count;
       }
-
+      Thread.Sleep(1000);
       Assert.AreEqual("Welcome", driver.FindElement(By.CssSelector("div.card div.card-header")).Text);
-      driver.Quit();
+
       driver.Close();
+      driver.Quit();
     }
 
 
