@@ -39,22 +39,6 @@ namespace ProjectBuild
       driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
 
 
-      //var elem = driver.FindElement(By.CssSelector("div.card div.card-header"));
-
-      //for (int i = 0; i < 20; i++)
-      //{
-      //  if (driver.FindElements(By.CssSelector("div.card div.card-header")).Count < 0)
-      //  {
-      //    Thread.Sleep(1500);
-      //    driver.Navigate().Refresh();
-          
-      //  }
-      //  else
-      //  {
-      //    Assert.AreEqual("Welcome", elem.Text);
-      //  }
-      //}
-
 
       int i = 0;
       while (i < 1)
@@ -65,7 +49,8 @@ namespace ProjectBuild
       }
 
       Assert.AreEqual("Welcome", driver.FindElement(By.CssSelector("div.card div.card-header")).Text);
-
+      driver.Quit();
+      driver.Close();
     }
 
 
