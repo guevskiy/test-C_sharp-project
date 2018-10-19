@@ -39,7 +39,6 @@ namespace ProjectBuild
       driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
 
 
-
       int i = 0;
       while (i < 1)
       {
