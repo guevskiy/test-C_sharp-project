@@ -25,7 +25,7 @@ namespace ProjectBuild
       // запускаем процесс
       Process procCommand = Process.Start(psiOpt);
 
-      Thread.Sleep(15000);
+      Thread.Sleep(2000);
 
     }
 
