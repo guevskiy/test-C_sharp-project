@@ -20,12 +20,12 @@ namespace Tests4Jenkins
     [OneTimeSetUp]
     public void SetUp()
     {
-      //driver = new ChromeDriver();
+      driver = new ChromeDriver();
       ////driver.Navigate().GoToUrl("http://executeautomation.com/demosite/index.html");
       ////driver.Navigate().GoToUrl("http://addressbook:8087/group.php");
-      //driver.Navigate().GoToUrl("http://localhost:4200");
-      //driver.Manage().Window.Maximize();
-      //Thread.Sleep(1000);
+      driver.Navigate().GoToUrl("http://localhost:4200");
+      driver.Manage().Window.Maximize();
+      Thread.Sleep(1000);
     }
 
     [OneTimeTearDown]
