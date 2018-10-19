@@ -3,6 +3,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -18,12 +20,12 @@ namespace Tests4Jenkins
     [OneTimeSetUp]
     public void SetUp()
     {
-      driver = new ChromeDriver();
-      //driver.Navigate().GoToUrl("http://executeautomation.com/demosite/index.html");
-      //driver.Navigate().GoToUrl("http://addressbook:8087/group.php");
-      driver.Navigate().GoToUrl("http://localhost:4200");
-      driver.Manage().Window.Maximize();
-      Thread.Sleep(1000);
+      //driver = new ChromeDriver();
+      ////driver.Navigate().GoToUrl("http://executeautomation.com/demosite/index.html");
+      ////driver.Navigate().GoToUrl("http://addressbook:8087/group.php");
+      //driver.Navigate().GoToUrl("http://localhost:4200");
+      //driver.Manage().Window.Maximize();
+      //Thread.Sleep(1000);
     }
 
     [OneTimeTearDown]
@@ -41,7 +43,7 @@ namespace Tests4Jenkins
       Assert.AreEqual("{Width=1936, Height=1056}", sz);
     }
 
-    
+
     [Test]
     public void TestMethod_002()
     {
