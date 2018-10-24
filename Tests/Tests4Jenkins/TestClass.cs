@@ -53,6 +53,14 @@ namespace Tests4Jenkins
     }
 
     [Test]
+    public void TestMethod_002_2()
+    {
+      string str = driver.FindElement(By.CssSelector("div.container-fluid h3")).Text;
+      Assert.AreEqual("Deborah Kurata", str);
+      Thread.Sleep(1000);
+    }
+
+    [Test]
     public void TestMethod_003()
     {
       driver.FindElement(By.CssSelector("ul.nav.nav-pills li:nth-child(2)")).Click();
