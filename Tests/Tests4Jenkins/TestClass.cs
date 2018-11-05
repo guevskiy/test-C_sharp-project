@@ -56,7 +56,7 @@ namespace Tests4Jenkins
     public void TestMethod_002_2()
     {
       string str = driver.FindElement(By.CssSelector("div.container-fluid h3")).Text;
-      Assert.AreEqual("Deborah Kuata", str);
+      Assert.AreEqual("Deborah Kurata", str);
       Thread.Sleep(1000);
     }
 
